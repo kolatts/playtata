@@ -84,7 +84,10 @@ public sealed class PlaywrightSessionNavigator
         where T : PageObject<T>
     {
         pageObject ??= ActivatorEx.CreateInstance<T>();
-        pageObject.AssignToSession(_session);
+        // TODO: Implement PlaywrightSession compatibility with PageObject
+        // For now, this will cause compilation errors that need to be resolved
+        // pageObject.AssignToSession(_session);
+        throw new NotImplementedException("PlaywrightSession integration with PageObject is not yet complete.");
         _session.PageObject = pageObject;
 
         string? navigationUrl = options.Navigate
@@ -128,7 +131,10 @@ public sealed class PlaywrightSessionNavigator
 
         if (!isReturnedFromTemporary)
         {
-            nextPageObject.AssignToSession(_session);
+            // TODO: Implement PlaywrightSession compatibility with PageObject
+            // For now, this will cause compilation errors that need to be resolved
+            // nextPageObject.AssignToSession(_session);
+            throw new NotImplementedException("PlaywrightSession integration with PageObject is not yet complete.");
 
             if (!options.Temporarily)
                 _session.PageObject = nextPageObject;
