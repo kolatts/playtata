@@ -2,36 +2,35 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <RootNamespace>Atata</RootNamespace>
-    <Version>4.0.0-beta.7</Version>
+    <RootNamespace>Playtata</RootNamespace>
+    <Version>1.0.0-beta.1</Version>
     <Description>
-C#/.NET web UI test automation full-featured framework based on Selenium WebDriver.
+C#/.NET web UI test automation full-featured framework based on Microsoft Playwright.
 
 The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.
 
-Atata on GitHub: https://github.com/atata-framework/atata
-Atata Framework documentation: https://atata.io
+Playtata on GitHub: https://github.com/kolatts/playtata
+Playtata Framework documentation: Coming soon
 
 Features:
-- WebDriver. Based on Selenium WebDriver and preserves all its features.
+- Playwright. Based on Microsoft Playwright with async-first design and modern browser automation.
 - Page object model. Provides a unique fluent page object pattern, which is easy to implement and maintain.
 - Components. Contains a rich set of ready-to-use components for inputs, tables, lists, etc.
 - Integration. Works on any .NET test engine (e.g. NUnit, xUnit, SpecFlow) as well as on CI systems like Jenkins, GitHub Actions, or TeamCity.
 - Triggers. A bunch of triggers to bind with different events to extend component behavior.
 - Verification. A set of fluent assertion methods and triggers for a component and data verification.
-- Configurable.  Defines the default component search strategies as well as additional settings. Atata.Configuration.Json provides flexible JSON configurations.
+- Configurable. Defines the default component search strategies as well as additional settings.
 - Reporting/Logging. Built-in customizable logging; screenshots and snapshots capturing functionality.
-- Extensible. Atata.HtmlValidation adds HTML page validation. Atata.Bootstrap and Atata.KendoUI provide extra components.
+- Extensible. Designed for extensibility with custom components and behaviors.
     </Description>
-    <RepositoryUrl>https://github.com/atata-framework/atata</RepositoryUrl>
-    <PackageId>Atata</PackageId>
-    <PackageTags>atata automation testing test selenium webdriver browser</PackageTags>
+    <RepositoryUrl>https://github.com/kolatts/playtata</RepositoryUrl>
+    <PackageId>Playtata</PackageId>
+    <PackageTags>playtata automation testing test playwright browser</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageProjectUrl>https://atata.io</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/kolatts/playtata</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata.WebDriverExtras" Version="4.0.0-beta.1" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Playwright" Version="1.50.1" />
@@ -39,13 +38,12 @@ Features:
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Selenium.WebDriver" Version="4.35.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
   </ItemGroup>
   
   <ItemGroup>
-    <InternalsVisibleTo Include="Atata.IntegrationTests" />
-    <InternalsVisibleTo Include="Atata.UnitTests" />
+    <InternalsVisibleTo Include="Playtata.IntegrationTests" />
+    <InternalsVisibleTo Include="Playtata.UnitTests" />
   </ItemGroup>
 
 </Project>

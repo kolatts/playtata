@@ -1,14 +1,8 @@
-# [Atata](https://atata.io)
+# [Playtata](https://github.com/kolatts/playtata)
 
-[![NuGet](http://img.shields.io/nuget/v/Atata.svg?style=flat)](https://www.nuget.org/packages/Atata/)
-[![GitHub release](https://img.shields.io/github/release/atata-framework/atata.svg)](https://github.com/atata-framework/atata/releases)
-[![Build status](https://dev.azure.com/atata-framework/atata/_apis/build/status/atata-ci?branchName=main)](https://dev.azure.com/atata-framework/atata/_build/latest?definitionId=17&branchName=main)
-[![Atata Templates](https://img.shields.io/badge/get-Atata_Templates-green.svg?color=4BC21F)](https://marketplace.visualstudio.com/items?itemName=YevgeniyShunevych.AtataTemplates)\
-[![Slack](https://img.shields.io/badge/join-Slack-green.svg?colorB=4EB898)](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
-[![Atata docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata.io)
-[![X](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://x.com/AtataFramework)
+[![Build status](https://dev.azure.com/kolatts/playtata/_apis/build/status/playtata-ci?branchName=main)](https://dev.azure.com/kolatts/playtata/_build/latest?definitionId=17&branchName=main)
 
-C#/.NET web UI test automation full-featured framework based on Selenium WebDriver.
+C#/.NET web UI test automation full-featured framework based on Microsoft Playwright.
 It uses a fluent page object pattern;
 has a built-in logging system;
 contains a unique triggers functionality;
@@ -19,39 +13,35 @@ You can describe a page object class without any methods and only have a set of 
 
 *The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.*
 
-- **[What's new in v3.4.0](https://atata.io/blog/2025/01/26/atata-3.4.0-released/)**
-- **[Migrating to Atata 3](https://atata.io/upgrade/to-atata-3/)**
-
 ## Features
 
-- **WebDriver**.
-  Based on [Selenium WebDriver](https://github.com/SeleniumHQ/selenium) and preserves all its features.
+- **Playwright**.
+  Based on [Microsoft Playwright](https://github.com/microsoft/playwright-dotnet) with modern async/await patterns and reliable browser automation.
 - **Page object model**.
   Provides a unique fluent page object pattern, which is easy to implement and maintain.
 - **Components**.
-  Contains a rich set of ready-to-use [components](https://atata.io/components/) for inputs, tables, lists, etc.
+  Contains a rich set of ready-to-use components for inputs, tables, lists, etc.
 - **Integration**.
   Works on any .NET test engine (e.g. NUnit, xUnit, SpecFlow) as well as on CI systems like Jenkins, GitHub Actions, or TeamCity.
 - **Triggers**.
-  A bunch of [triggers](https://atata.io/triggers/) to bind with different events to extend component behavior.
+  A bunch of triggers to bind with different events to extend component behavior.
 - **Verification**.
   A set of fluent assertion methods and triggers for a component and data verification.
 - **Configurable**.
-  Defines the default component search strategies as well as additional settings. [Atata.Configuration.Json](https://github.com/atata-framework/atata-configuration-json) provides flexible JSON configurations.
+  Defines the default component search strategies as well as additional settings.
 - **Reporting/Logging**.
   Built-in customizable logging; screenshots and snapshots capturing functionality.
 - **Extensible**.
-  [Atata.HtmlValidation](https://github.com/atata-framework/atata-htmlvalidation) adds HTML page validation.
-  [Atata.Bootstrap](https://github.com/atata-framework/atata-bootstrap) and [Atata.KendoUI](https://github.com/atata-framework/atata-kendoui) provide extra components.
+  Designed for extensibility with custom components and behaviors.
 
 ## Usage
 
 ### Page object
 
-Simple sign-in page object for https://demo.atata.io/signin page:
+Simple sign-in page object:
 
 ```C#
-using Atata;
+using Playtata;
 
 namespace SampleApp.UITests
 {
@@ -94,26 +84,22 @@ public void SignIn()
 [SetUp]
 public void SetUp()
 {
-    AtataContext.Configure()
+    PlaytataContext.Configure()
         .UseChrome()
-        .UseBaseUrl("https://demo.atata.io/")
+        .UseBaseUrl("https://demo.example.com/")
         .Build();
 }
 ```
 
-*Find out more on [Atata usage](https://atata.io/getting-started/#usage). Check [atata-framework/atata-samples](https://github.com/atata-framework/atata-samples) for different Atata test scenario samples.*
-
 ## Demo
-
-Demo [atata-framework/atata-sample-app-tests](https://github.com/atata-framework/atata-sample-app-tests) UI tests application demonstrates different testing approaches and features of Atata Framework. It covers main Atata features: page navigation, data input and verification, interaction with pop-ups and tables, logging, screenshot capture, etc.
 
 Sample test:
 
 ```C#
 [Test]
-public void Create()
+public async Task Create()
 {
-    Login()
+    await Login()
         .New()
             .ModalTitle.Should.Be("New User")
             .General.FirstName.SetRandom(out string firstName)
@@ -135,40 +121,13 @@ public void Create()
 
 ## Documentation
 
-Find out more on [Atata Docs](https://atata.io) and on [Getting Started](https://atata.io/getting-started/) page in particular.
-
-### Tutorials
-
-You can also check the following tutorials:
-
-- [Atata - C# Web Test Automation Framework](https://www.codeproject.com/articles/Atata-New-Test-Automation-Framework) - an introduction to Atata Framework.
-- [Verification of Page](https://atata.io/tutorials/verification-of-page/) - how to verify web page data using different approaches of Atata Framework.
-- [Verification of Validation Messages](https://atata.io/tutorials/verification-of-validation-messages/) - how to verify validation messages on web pages using Atata Framework.
-- [Handle Confirmation Popups](https://atata.io/tutorials/handle-confirmation-popups/) - how to handle different confirmation popups using Atata Framework.
-- [Multi-Browser Configuration via .runsettings files](https://atata.io/tutorials/multi-browser-configuration-via-runsettings-files/) - how to configure multi-browser tests application using `.runsettings` files.
-- [Reporting to Extent Reports](https://atata.io/tutorials/reporting-to-extentreports/) - how to configure Atata reporting to Extent Reports.
-
-## Community
-
-- Slack: [https://atata-framework.slack.com](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
-- X: https://x.com/AtataFramework
-- Stack Overflow: https://stackoverflow.com/questions/tagged/atata
+Coming soon! This framework is based on the concepts from the Atata framework but redesigned for Microsoft Playwright.
 
 ## Feedback
 
 Any feedback, issues and feature requests are welcome.
 
-If you faced an issue please report it to [Atata Issues](https://github.com/atata-framework/atata/issues),
-[ask a question on Stack Overflow](https://stackoverflow.com/questions/ask?tags=atata+csharp) using [atata](https://stackoverflow.com/questions/tagged/atata) tag
-or use another [Atata Contact](https://atata.io/contact/) way.
-
-## Contact author
-
-Contact me if you need a help in test automation using Atata Framework, or if you are looking for a quality test automation implementation for your project.
-
-- LinkedIn: https://www.linkedin.com/in/yevgeniy-shunevych
-- Email: yevgeniy.shunevych@gmail.com
-- Consulting: https://atata.io/consulting/
+If you faced an issue please report it to [Playtata Issues](https://github.com/kolatts/playtata/issues).
 
 ## Contributing
 
@@ -176,14 +135,10 @@ Check out [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ## SemVer
 
-Atata Framework tries to follow [Semantic Versioning 2.0](https://semver.org/) when possible.
-Sometimes Selenium.WebDriver dependency package can contain breaking changes in minor version releases,
-so those changes can break Atata as well.
-But Atata manages its sources according to SemVer.
-Thus backward compatibility is mostly followed and updates within the same major version
-(e.g. from 2.1 to 2.2) should not require code changes.
+Playtata Framework follows [Semantic Versioning 2.0](https://semver.org/).
+We maintain backward compatibility and follow semantic versioning principles for releases.
 
 ## License
 
-Atata is an open source software, licensed under the Apache License 2.0.
+Playtata is an open source software, licensed under the Apache License 2.0.
 See [LICENSE](LICENSE) for details.
