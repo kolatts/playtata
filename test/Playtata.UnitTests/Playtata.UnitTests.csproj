@@ -2,20 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <NoWarn>CS8618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Atata.Cli" Version="4.0.0-beta.2" />
-    <PackageReference Include="Atata.WebDriverSetup" Version="4.0.0-beta.2" />
     <PackageReference Include="FluentAssertions" Version="7.2.0" />
-    <PackageReference Include="log4net" Version="3.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="NUnit" Version="4.4.0" />
@@ -23,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Atata\Atata.csproj" />
-    <ProjectReference Include="..\Atata.TestApp\Atata.TestApp.csproj" />
+    <ProjectReference Include="..\..\src\Playtata\Playtata.csproj" />
   </ItemGroup>
 
 </Project>

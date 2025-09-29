@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Atata\Atata.csproj" />
+    <ProjectReference Include="..\..\src\Playtata\Playtata.csproj" />
   </ItemGroup>
 
 </Project>
